@@ -10,7 +10,6 @@ const generateToken = (data) => {
         name: data.name,
         email: data.email,
     };
-
     const token = jwt.sign(payload, secret, { expiresIn, algorithm });
     return token;
 };
