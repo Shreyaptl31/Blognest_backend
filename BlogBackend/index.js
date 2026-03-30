@@ -13,7 +13,9 @@ const routes = require("./Route/route");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "*", credentials: true }));
+
 app.use("/", routes);
+app.use("/api/chat", require("./Route/chat"));
 
 app.get("/", (req, res) => res.send("BlogNest API Running ✅"));
 app.listen(port, () => console.log(`🚀 Server running on port ${port}!`));
