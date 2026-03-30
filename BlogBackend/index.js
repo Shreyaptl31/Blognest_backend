@@ -9,10 +9,13 @@ if (process.env.NODE_ENV !== "production") {
 require("./db");
 const port = process.env.PORT || 3000;
 const routes = require("./Route/route");
+const googleLoginRoute = require("./Route/googleLogin");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: "*", credentials: true }));
+
+app.use("/", googleLoginRoute);
 
 app.use("/", routes);
 
