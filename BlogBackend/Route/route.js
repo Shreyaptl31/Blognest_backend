@@ -1,5 +1,3 @@
-// const router = express.Router();
-// const express = require("express");
 const router = require("express").Router();
 const { blogCreate, getBlogs, getSingleBlog, updateBlog, deleteBlog } = require("../Controller/BlogController");
 const { userRegister, login, getUser, updateUser, singleUser } = require("../Controller/UserController");

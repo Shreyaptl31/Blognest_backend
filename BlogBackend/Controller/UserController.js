@@ -146,23 +146,31 @@ exports.singleUser = async (req, res) => {
   }
 };
 
+// google authentication 
 exports.googleLogin = async (req, res) => {
   try {
-    const { name, email } = req.body;
+    const { name, email } = req.body;  // ✅ remove photo
 
     let user = await User.findOne({ email });
 
     if (!user) {
+      const nameParts = (name || "").trim().split(" ");
+      const firstName = nameParts[0] || "User";
+      const lastName = nameParts.slice(1).join(" ") || "";
+
       user = await User.create({
-        name,
+        name: firstName,
+        lname: lastName,
         email,
-        password: "google_auth"
+        password: "google_auth",
       });
     }
 
     res.json({
       userId: user._id,
-      message: "Google login success"
+      name: user.name,
+      lname: user.lname || "",
+      message: "Google login success",
     });
 
   } catch (err) {

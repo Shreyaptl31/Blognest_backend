@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 const routes = require("./Route/route");
 const googleLoginRoute = require("./Route/googleLogin");
 
-// ✅ CORS must be first — before any routes or body parsers
+
 app.use(cors({
   origin: [
     "http://localhost:5173",
