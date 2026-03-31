@@ -26,10 +26,11 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/health", (req, res) => res.json({ status: "ok" }));
+
 app.use("/", googleLoginRoute);
 app.use("/", routes);
 
-app.get("/health", (req, res) => res.json({ status: "ok" }));
 app.get("/", (req, res) => res.send("BlogNest API Running ✅"));
 
 app.listen(port, () => console.log(`🚀 Server running on port ${port}!`));
